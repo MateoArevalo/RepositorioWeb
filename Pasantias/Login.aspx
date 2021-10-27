@@ -10,14 +10,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="Label1" runat="server" Text="Usuario: "></asp:Label>
-            <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
-            <br />
-            <asp:Label ID="Label2" runat="server" Text="Contraseña: "></asp:Label>
-            <asp:TextBox ID="txtPass" runat="server"></asp:TextBox>
-            <br />
-            <asp:Button ID="btnLogin" runat="server" Text="Ingresar"/>
+        <div class="loginContainer">
+            <h1>Iniciar sesión</h1>
+            <asp:Label CssClass="label" runat="server" Text="Usuario: "></asp:Label>
+            <asp:TextBox ID="txtUser" runat="server" placeHolder="Nombre de usuario" CssClass="inputLogin"></asp:TextBox>
+            <asp:Label CssClass="label" runat="server" Text="Contraseña: "></asp:Label>
+            <asp:TextBox ID="txtPass" runat="server" placeHolder="Contraseña" CssClass="inputLogin" TextMode="Password"></asp:TextBox>
+            <asp:Label ID="lblMensaje" CssClass="label" runat="server" Text="Usuario o contraseña incorrecta" Color="#ff0000" Visible="false"></asp:Label>
+            <asp:Button ID="btnLogin" CssClass="boton" runat="server" Text="Ingresar" OnClick="btnLogin_Click" />
         </div>
     </form>
 </body>
