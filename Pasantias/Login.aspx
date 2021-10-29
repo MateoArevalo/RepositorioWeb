@@ -16,8 +16,10 @@
             <asp:TextBox ID="txtUser" runat="server" placeHolder="Nombre de usuario" CssClass="inputLogin"></asp:TextBox>
             <asp:Label CssClass="label" runat="server" Text="Contraseña: "></asp:Label>
             <asp:TextBox ID="txtPass" runat="server" placeHolder="Contraseña" CssClass="inputLogin" TextMode="Password"></asp:TextBox>
-            <asp:Label ID="lblMensaje" CssClass="label" runat="server" Text="Usuario o contraseña incorrecta" Color="#ff0000" Visible="false"></asp:Label>
             <asp:Button ID="btnLogin" CssClass="boton" runat="server" Text="Ingresar" OnClick="btnLogin_Click" />
+            <asp:Label ID="lblMensaje" CssClass="label" runat="server" Text="Usuario o contraseña incorrecta" Color="#ff0000" Visible="false"></asp:Label>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Producto Obligatorio" ControlToValidate="txtUser" ForeColor="#ff0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Precio Obligatorio" ControlToValidate="txtPass" ForeColor="#ff0000"></asp:RequiredFieldValidator>
         </div>
     </form>
 </body>

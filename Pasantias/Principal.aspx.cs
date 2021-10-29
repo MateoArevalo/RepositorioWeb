@@ -15,7 +15,7 @@ namespace Pasantias
         DataSet data = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (!IsPostBack)
             {
                 cargarCategoria();
                 cargarProducto();
@@ -24,15 +24,22 @@ namespace Pasantias
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (hdfIdProducto != null)
+            if (hdfIdProducto.Value == null || hdfIdProducto.Value == "")
             {
-                editarProducto(txtProducto.Text, txtDescripcion.Text, Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(hdfIdProducto.Value));
-                hdfIdProducto.Value = string.Empty;
-                limpiar();
+                if (string.IsNullOrEmpty(txtProducto.Text) || string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(txtPrecio.Text))
+                {
+                    lblMensaje.Visible = true;
+                }
+                else
+                {
+                    CrearProducto(txtProducto.Text, Convert.ToInt32(cbxCategoria.SelectedValue), txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text));
+                    limpiar();
+                }
             }
             else
             {
-                CrearProducto(txtProducto.Text, Convert.ToInt32(cbxCategoria.SelectedValue), txtDescripcion.Text, Convert.ToDouble(txtPrecio.Text));
+                editarProducto(txtProducto.Text, txtDescripcion.Text, Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDouble(txtPrecio.Text), Convert.ToInt32(hdfIdProducto.Value));
+                hdfIdProducto.Value = string.Empty;
                 limpiar();
             }
             
@@ -82,6 +89,8 @@ namespace Pasantias
             txtDescripcion.Text = string.Empty;
             cbxCategoria.SelectedIndex = 1;
             txtPrecio.Text = "1";
+            lblMensaje.Visible = false;
+            hdfIdProducto.Value = null;
         }
 
         public void cargarCategoria()

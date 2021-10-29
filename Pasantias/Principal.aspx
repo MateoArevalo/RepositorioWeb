@@ -14,12 +14,25 @@
         <div>
             <h1>Bienvenido</h1>
             <asp:HiddenField ID="hdfIdProducto" runat="server" />
+            <asp:Label CssClass="label" runat="server" Text="Usuario: "></asp:Label>
             <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label CssClass="label" runat="server" Text="Categoría: "></asp:Label>
             <asp:DropDownList ID="cbxCategoria" runat="server"></asp:DropDownList>
+            <br />
+            <asp:Label CssClass="label" runat="server" Text="Descripción: "></asp:Label>
             <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label CssClass="label" runat="server" Text="Precio: "></asp:Label>
             <asp:TextBox ID="txtPrecio" runat="server" TextMode="Number" step="0.01" min="0"></asp:TextBox>
+            <br />
             <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"/>
+            <br />
+            <asp:Label CssClass="label" ID="lblMensaje" ForeColor="#ff0000" Visible="false" runat="server" Text="Hay campos vacíos, por favor llenarlos"></asp:Label>
+            <br />
+            
         </div>
+        <hr />
         <div class="Table">
             <ContentTemplate>
                 <asp:GridView ID="grvProducto" runat="server" AutoGenerateColumns="false" EmptyDataText="No hay productos disponibles">

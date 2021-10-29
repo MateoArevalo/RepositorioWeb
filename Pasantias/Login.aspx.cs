@@ -19,8 +19,16 @@ namespace Pasantias
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            
-            logeo(txtUser.Text, txtPass.Text);
+            int log = logeo(txtUser.Text, txtPass.Text);
+            if (log != 0)
+            {
+                lblMensaje.Visible = false;
+                Response.Redirect("Principal.aspx");
+            }
+            else
+            {
+                lblMensaje.Visible = true;
+            }
         }
 
         public void abrirConexion()
@@ -43,19 +51,19 @@ namespace Pasantias
         {
             try
             {
-                int verificador=1;
+                int verificador=0;
                 abrirConexion();
-                string sql = "Select * from usuario where userName='"+user+"' and password='"+pass+"'";
+                string sql = "Select * from usuarios where userName='"+user+"' and password='"+pass+"'";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    lblMensaje.Visible = false;
-                    Response.Redirect("Principal.aspx");
+                    verificador = 1;
                 }
                 else
                 {
                     lblMensaje.Visible = true;
+                    verificador = 0;
                 }
                 cerrarConexion();
                 return verificador;
